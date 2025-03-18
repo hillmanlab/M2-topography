@@ -1,4 +1,4 @@
-The first repository contains analysis and figure-generation scripts accompanying the manuscript: **_In vivo_ Delineation of a Body-Part-Specific Topography in Mouse Secondary Motor Cortex.** All scripts are organized into clear folders by their specific analysis or figure, facilitating reproducibility and and ease of navigation.
+The first repository contains analysis and figure-generation scripts accompanying the manuscript: **_In vivo_ Delineation of a Body-Part-Specific Topography in Mouse Secondary Motor Cortex.** All scripts are organized into clear folders by their specific analysis or figure, facilitating reproducibility and ease of navigation.
 
 
 ## Code Repository
@@ -41,19 +41,19 @@ Scripts for preprocessing and generating datasets used throughout the analysis p
 - **refine-M2-ROIs**  
     Scripts for manually refining region-of-interest (ROI) boundaries in M2.
     
-- **behavior-syllables** 
+- **behavior-syllables** <br>
 	Saves all behavioral signals into pandas DataFrame (Figure 2)
 	
-- **CNN&linear** 
+- **CNN&linear** <br>
 	Decodes behavioral signals using neural activity (Figure 2)
 	
 - **reconstruct-500-to-full**  
 	load full-resolution (256 x 256 pixels) data (Note: Data size is large; ensure sufficient memory is available). 
 	
-- **CSN-M1-prelude** 
+- **CSN-M1-prelude** <br>
 	Aggregated analysis for simultaneous recordings of Thy1 and CSNs activity across movement types (Figure 5 and S4) 
 	
-- **CLS-all-mice** 
+- **CLS-all-mice** <br>
 	Spatiotemporal un-mixing analysis using constrained least squares (CLS) (Figure 6, 7, and S5)
 
 ### `make_1_figures`
@@ -90,13 +90,13 @@ Includes synchronized neural activity, hemodynamic signals, LEDs illumination da
         
         - `1` (Experimental session/day number)
             
-            Individual `.mat` files for different sequential 10-minute recordings (e.g., runB, runC, ...), along with corresponding preview movies. Each data file contains: 
-            **-m**: acquisition information.
-            **-mask**: Boolean mask used to remove non-cortical areas outside the dorsal cortical imaging window. 
-            -**spatial (`C`) and temporal (`S`) SVD components** for 
-	            -Raw LED illumination data (`lime`, `green`, `red`; `blue` is included only in 2-color imaging sessions)
-	            -Neuronal calcium-dependent fluorescence signals: `jrgeco` (all mice) and `gcamp` (only in 2-color mice)
-	            -Hemodynamic signals: changes in oxyhemoglobin (`chbo`), total oxyhemoglobin (`chbt`). Changes in de-oxyhemoglobin (`chbr`) computed as `chbt` - `chbo` 
+            Individual `.mat` files for different sequential 10-minute recordings (e.g., runB, runC, ...), along with corresponding preview movies. Each data file contains: <br>
+            **-m**: acquisition information.<br>
+            **-mask**: Boolean mask used to remove non-cortical areas outside the dorsal cortical imaging window. <br>
+            -**spatial (`C`) and temporal (`S`) SVD components** for <br>
+	            -Raw LED illumination data (`lime`, `green`, `red`; `blue` is included only in 2-color imaging sessions)<br>
+	            -Neuronal calcium-dependent fluorescence signals: `jrgeco` (all mice) and `gcamp` (only in 2-color mice)<br>
+	            -Hemodynamic signals: changes in oxyhemoglobin (`chbo`), total oxyhemoglobin (`chbt`). Changes in de-oxyhemoglobin (`chbr`) computed as `chbt` - `chbo` <br>
 	        For reconstructing original data matrices from SVD components, refer to the code provided below.
                 
 - **step_2**: Parcellated brain data (500 k-means clustered regions).
