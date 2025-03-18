@@ -210,4 +210,4 @@ with open(pkl_filename, 'rb') as file:
 
 Pixels from full-resolution images were clustered into 500 regions using k-means clustering (run individually for each mouse). Region indices (`IDX_sorted`) are ordered systematically from right-to-left and anterior-to-posterior. Each mouse’s corresponding `IDX_sorted` index is stored in the **step_0** folder and applied to the **step_1** data to extract neural activity time courses (see the figure below). This reduces data dimensionality from 256 × 256 pixels to 500 spatially clustered regions, facilitating efficient downstream analyses.
 
-![[make_1_figures/demo_figure/IDX_sorted_demo.png]]
+![[IDX_sorted_demo.png]]
