@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Data lives in the paper's figshare deposit, not in git.
+# A few small required inputs remain tracked (figure_1/Spectra/*, figure_1/atlas.mat,
+# figure_S4/*.mat); tracked files are unaffected by these rules.
+*.h5
+*.nrrd
+
+# Allen SDK download cache, recreated by the notebooks that need it.
+make_1_figures/figure_S5/connectivity/
+make_1_figures/figure_S5/mouse_connectivity/
+
+# ffmpeg staging, recreated on every run
+temp_frames/
+movie_frames/
+*.mp4
