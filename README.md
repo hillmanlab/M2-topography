@@ -2,7 +2,7 @@
 
 Analysis code accompanying the manuscript **Intrinsic Neural Dynamics Reveal a Body-Part-Specific Topography in Mouse Secondary Motor Cortex**. All figures in the paper are produced by the notebooks in this repository from the deposited dataset.
 
-**Code repository:** [https://github.com/hillmanlab/M2-topography](https://github.com/hillmanlab/M2-topography)
+**Code repository:** [https://github.com/hillmanlab/M2-topography](https://github.com/hillmanlab/M2-topography) \
 **Data repository:** [https://doi.org/10.25452/figshare.plus.28633379](https://doi.org/10.25452/figshare.plus.28633379)
 
 ---
@@ -37,10 +37,7 @@ what they produced.
 
 ---
 
-
-
 ## `make_0_prepare` — preprocessing and dataset construction
-
 
 | Folder                                  | What it does                                                                                                                                                                                                                                                                                                                                                    | Feeds            |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
@@ -65,16 +62,12 @@ what they produced.
 | `CNN&linear`                            | Decodes behavior from cortical activity; linear versus 1D convolutional neural network models                                                                                                                                                                                                                                                                   | S7               |
 | `allen-connectivity-atlas`              | Downloads and caches Allen Mouse Brain Connectivity projection-density volumes for selected S1 and MOs injection experiments                                                                                                                                                                                                                                    | 4, S5            |
 
-
-
-
 ## `make_1_figures` — figure generation
 
 One folder per figure. `_corrected/` subfolders hold re-exported panels; see the notes
 in the relevant notebook for what was corrected.
 
 **Main figures**
-
 
 |            | Content                                                                                                                                                                                                                                                                                 | Mice                                            |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
@@ -86,9 +79,7 @@ in the relevant notebook for what was corrected.
 | `figure_6` | The CLS/NNLS unmixing model on a continuous session, broken-axis time courses of behavior-segmented epochs                                                                                                                                                                              | cm229                                           |
 | `figure_7` | Behavior-specific (lick, run, integrated) component maps and time courses, anatomical selectivity statistics, and the pieced NNLS decomposition with *k*-selection curves                                                                                                               | cm125, cm126, cm128, cm229, cm241, cm242        |
 
-
 **Supplementary figures**
-
 
 |              | Content                                                                                                                                                                                                                      | Mice                                             |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
@@ -103,10 +94,7 @@ in the relevant notebook for what was corrected.
 | `figure_S9`  | Unmixing controls: M2 mean activation amplitude from standard ROI averaging (i) versus CLS-derived components (ii), resting correlation matrices raw versus disentangled, and selection of the disentanglement parameter *k* | cm125, cm126, cm128, cm229, cm241, cm242         |
 | `figure_S10` | Rest-to-lick bouts versus licking during locomotion: M1 corticospinal ΔF/F and brain maps                                                                                                                                    | cm229                                            |
 
-
 ---
-
-
 
 ## Data repository
 
@@ -133,8 +121,6 @@ two-colour mice), and hemodynamics (`chbo`, `chbt`; `chbr` = `chbt` − `chbo`).
 - **step_2** — parcellated data: extracted time courses for 500 k-means regions.
 - **step_3** — behavioral signals from webcam footage (face and body motion energy).
 
-
-
 ### `prepares_data`
 
 - **config** — palettes, colormaps, brain masks, `dict_seed_ROI_xy_mice`.
@@ -150,34 +136,24 @@ contours derived from them.
 - **CLS** — spatial templates fitted by constrained least squares.
 - **allen-connectivity-atlas** — cached Allen projection-density volumes.
 
-
-
 ### `figures_data`
 
 Per-figure support data, organised by figure.
 
 ---
 
-
-
 ## Mice
-
 
 | Mouse                                           | Genotype / labelling                                       | Imaging            |
 | ----------------------------------------------- | ---------------------------------------------------------- | ------------------ |
 | cm125, cm126, cm128, cm193, cm216, cm241, cm242 | Thy1-jRGECO1a                                              | single-colour WFOM |
-| cm219, cm229, cm265                             | Thy1-jRGECO1a with corticospinal neurons labelled by GCaMP | two-colour WFOM    |
+| cm219, cm229, cm265, cm284                      | Thy1-jRGECO1a with corticospinal neurons labelled by GCaMP | two-colour WFOM    |
 
-
-The corticospinal labelling of cm219 and cm229 targets neurons projecting to the right forelimb, while cm265's targets neurons projecting to the right hindlimb.
+The corticospinal labelling of cm219 and cm229 targets neurons projecting to the right forelimb, while the labeling of cm265 and cm284 targets neurons projecting to the right hindlimb.
 
 ---
 
-
-
 ## Data formats
-
-
 
 ### `step_1` (HDF5 `.mat`)
 
@@ -206,8 +182,6 @@ with h5py.File(filename, 'r') as f:
     lime = np.dot(S, C).transpose().reshape((256, 256, -1)).transpose((1, 0, 2))
 ```
 
-
-
 ### Pickles
 
 ```python
@@ -215,15 +189,12 @@ from harness import load_pickle
 obj = load_pickle(path)          # handles pandas-1.x pickles under pandas 2
 ```
 
-
-
 ### `step_2` — the 500-region parcellation
 
 Pixels were clustered into 500 regions by k-means, run separately for each mouse. Region
 indices (`IDX_sorted`) are ordered right-to-left and anterior-to-posterior; each mouse's
 `IDX_sorted` lives in `step_0` and is applied to `step_1` data to extract the region time
 courses, reducing 256 × 256 pixels to 500 regions.
-
 
 ![](IDX_sorted_demo.png)
 
@@ -248,8 +219,6 @@ DeepLabCut pose estimates are provided separately, under `webcams_data`.
 Downsampled webcam videos with DeepLabCut pose estimates labelled, used for the body-part tracking that the behavioral analyses depend on. Full-resolution videos are not deposited because of their size.
 
 ---
-
-
 
 ## License
 
